@@ -1,4 +1,4 @@
-package Modelo;
+package br.edu.up.Modelo;
 
 import java.time.Year;
 import java.util.Arrays;
@@ -62,5 +62,9 @@ public class Livro {
         }
         else
             throw new IllegalArgumentException("Ano inválido!");
+    }
+
+    public String getIsbn() {
+        return Isbn;
     }
 }
