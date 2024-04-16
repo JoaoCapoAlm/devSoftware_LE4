@@ -19,7 +19,7 @@ bin/
 .vscode/
 /nbproject/private/
 /nbbuild/
-*/.idea/
+.idea
 /dist/
 /nbdist/
 /.nb-gradle/
