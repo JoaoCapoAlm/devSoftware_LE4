@@ -10,4 +10,8 @@ public abstract class Pessoa {
         Rg = rg;
         Matricula = matricula;
     }
+
+    public String GetNome(){
+        return Nome;
+    }
 }

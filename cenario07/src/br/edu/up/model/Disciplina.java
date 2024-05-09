@@ -1,17 +1,18 @@
 package br.edu.up.model;
 
+import java.util.Dictionary;
 import java.util.List;
 
 public class Disciplina {
     private String Nome;
     private String Identificador;
-    private String Currículo;
+    private String Curriculo;
     private List<Competencia> Competencias;
 
-    public Disciplina(String nome, String identificador, String currículo, List<Competencia> competencias) {
+    public Disciplina(String nome, String identificador, String curriculo, List<Competencia> competencias) {
         Nome = nome;
         Identificador = identificador;
-        Currículo = currículo;
+        Curriculo = curriculo;
         Competencias = competencias;
     }
 
@@ -24,7 +25,7 @@ public class Disciplina {
     }
 
     public String getCurrículo() {
-        return Currículo;
+        return Curriculo;
     }
 
     public List<Competencia> getCompetencias() {
@@ -33,5 +34,25 @@ public class Disciplina {
 
     public void addCompetencia(Competencia competencia) {
         Competencias.add(competencia);
+    }
+
+    public int qtdIsNecessario(){
+        int qtdNecessario = 0;
+        for(var competencia : Competencias){
+            if(competencia.getIsNecessaria())
+                qtdNecessario++;
+        }
+
+        return qtdNecessario;
+    }
+
+    public int qtdIsComplementar(){
+        int qtdComplementar = 0;
+        for(var competencia : Competencias){
+            if(!competencia.getIsNecessaria())
+                qtdComplementar++;
+        }
+
+        return qtdComplementar;
     }
 }
