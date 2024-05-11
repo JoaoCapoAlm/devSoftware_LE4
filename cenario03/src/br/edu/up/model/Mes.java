@@ -33,11 +33,17 @@ public class Mes {
         Dias[diaMes].ExcluirCompromisso(hora);
     }
 
-    public Compromisso[] ListarCompromissos(int diaMes) {
+    public String ListarCompromissos(int diaMes) {
         return Dias[diaMes].ListarCompromisso();
     }
 
-    public Dia[] ListarCompromissos() {
-        return Dias;
+    public String ListarCompromissos() {
+        var sb = new StringBuilder("Mês ");
+        sb.append(Nome).append("\n");
+
+        for (Dia dia : Dias) {
+            sb.append(dia.ListarCompromisso()).append("\n\n");
+        }
+        return sb.toString();
     }
 }

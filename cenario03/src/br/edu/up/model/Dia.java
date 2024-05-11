@@ -29,7 +29,13 @@ public class Dia {
         return Compromissos[hora];
     }
 
-    public Compromisso[] ListarCompromisso(){
-        return Compromissos;
+    public String ListarCompromisso(){
+        var sb = new StringBuilder("Dia ");
+        sb.append(DiaMes).append("\n");
+
+        for(Compromisso c : Compromissos){
+            sb.append(c.toString()).append("\n\n");
+        }
+        return sb.toString();
     }
 }
