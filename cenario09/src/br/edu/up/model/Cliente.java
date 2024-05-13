@@ -72,4 +72,13 @@ public abstract class Cliente {
             throw new Exception("Valor disponível maior que permitido!");
         }
     }
+
+    public double devolver(double valor){
+        if(getVlrEmprestado() < valor){
+            throw new IllegalArgumentException("Valor a devolver maior do que o valor emprestado!");
+        }
+
+        setVlrEmprestado(getVlrEmprestado() - valor);
+        return getVlrEmprestado();
+    }
 }
