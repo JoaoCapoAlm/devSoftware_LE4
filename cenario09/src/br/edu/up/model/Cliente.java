@@ -8,12 +8,8 @@ public abstract class Cliente {
     private double vlrMaxCredito;
     private double vlrEmprestado;
 
-    public Cliente(String nome, String telefone, String email, double vlrMaxCredito){
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-
-        this.vlrMaxCredito = vlrMaxCredito;
+    public Cliente(double credito){
+        this.vlrMaxCredito = credito;
         this.vlrEmprestado = 0;
     }
 
@@ -61,7 +57,7 @@ public abstract class Cliente {
         return vlrEmprestado;
     }
 
-    public void setVlrEmprestado(double vlrEmprestado) {
+    private void setVlrEmprestado(double vlrEmprestado) {
         this.vlrEmprestado = vlrEmprestado;
     }
 
@@ -75,10 +71,14 @@ public abstract class Cliente {
 
     public double devolver(double valor){
         if(getVlrEmprestado() < valor){
-            throw new IllegalArgumentException("Valor a devolver maior do que o valor emprestado!");
+            throw new IllegalArgumentException("Valor a devolver menor ou igual do que o valor emprestado!");
         }
 
         setVlrEmprestado(getVlrEmprestado() - valor);
         return getVlrEmprestado();
+    }
+
+    public double getSaldo(){
+        return 0;
     }
 }

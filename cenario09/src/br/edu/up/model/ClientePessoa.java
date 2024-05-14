@@ -5,11 +5,13 @@ public class ClientePessoa extends Cliente {
     private double peso;
     private double altura;
 
-    public ClientePessoa(String nome, String telefone, String email, double vlrMaxCredito, String cpf, double peso, double altura) {
-        super(nome, telefone, email, vlrMaxCredito);
+    public ClientePessoa(double credito, String cpf) {
+        super(credito);
+
         this.cpf = cpf;
-        this.peso = peso;
-        this.altura = altura;
+
+        if(credito >= 10000)
+            throw new IllegalArgumentException("Limite de crédito ultrapassado!");
     }
 
     public String getCpf() {
