@@ -8,9 +8,9 @@ public class ClientePessoa extends Cliente {
     public ClientePessoa(double credito, String cpf) {
         super(credito);
 
-        this.cpf = cpf;
+        setCpf(cpf);
 
-        if(credito >= 10000)
+        if(credito > 10000)
             throw new IllegalArgumentException("Limite de crédito ultrapassado!");
     }
 

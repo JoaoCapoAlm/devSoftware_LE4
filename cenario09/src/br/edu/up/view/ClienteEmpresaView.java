@@ -16,7 +16,6 @@ public class ClienteEmpresaView {
         _controller = new EmpresaController();
     }
 
-
     public void IncluirCliente() {
         var maxCredito = _scanner.nextDouble();
         _scanner.nextLine();
@@ -36,4 +35,38 @@ public class ClienteEmpresaView {
         }
     }
 
+    public void ShowCliente(){
+        System.out.println("Digite o CNPJ do cliente que deseja verificar os dados");
+        var documento = _scanner.nextLine();
+        var cliente = _controller.GetCliente(documento);
+
+        if(cliente == null)
+            System.out.println("Cliente não encontrado!");
+        else
+            System.out.println(cliente);
+    }
+
+    public void Emprestar(){
+        System.out.println("Digite o CNPJ do cliente");
+        var documento = _scanner.nextLine();
+
+        System.out.println("Valor a ser emprestado");
+        var valor = _scanner.nextDouble();
+        _scanner.nextLine();
+
+        var emprestimo = _controller.Emprestar(documento, valor);
+        System.out.println(emprestimo);
+    }
+
+    public void Devolver(){
+        System.out.println("Digite o CNPJ do cliente");
+        var documento = _scanner.nextLine();
+
+        System.out.println("Valor a ser devolvido");
+        var valor = _scanner.nextDouble();
+        _scanner.nextLine();
+
+        var operacao = _controller.Devolver(documento, valor);
+        System.out.println(operacao);
+    }
 }

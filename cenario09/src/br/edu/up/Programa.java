@@ -1,5 +1,6 @@
 package br.edu.up;
 
+import br.edu.up.view.ClienteEmpresaView;
 import br.edu.up.view.ClientePessoaView;
 
 import java.util.Scanner;
@@ -8,7 +9,7 @@ public class Programa {
     public static void main(String[] args) {
         Scanner _scanner = new Scanner(System.in);
         var pessoaView = new ClientePessoaView();
-        var empresaView = new ClientePessoaView();
+        var empresaView = new ClienteEmpresaView();
 
         var continuarAplicacao = true;
         while (continuarAplicacao){
@@ -20,6 +21,12 @@ public class Programa {
             switch (opcao) {
                 case 1 -> pessoaView.IncluirCliente();
                 case 2 -> empresaView.IncluirCliente();
+                case 3 -> pessoaView.ShowCliente();
+                case 4 -> empresaView.ShowCliente();
+                case 5 -> pessoaView.Emprestar();
+                case 6 -> empresaView.Emprestar();
+                case 7 -> pessoaView.Devolver();
+                case 8 -> empresaView.Devolver();
                 default -> continuarAplicacao = false;
             }
         }
