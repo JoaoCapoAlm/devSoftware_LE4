@@ -1,5 +1,6 @@
 package br.edu.up;
 
+import br.edu.up.controller.PessoaController;
 import br.edu.up.view.ClienteEmpresaView;
 import br.edu.up.view.ClientePessoaView;
 
@@ -8,7 +9,9 @@ import java.util.Scanner;
 public class Programa {
     public static void main(String[] args) {
         Scanner _scanner = new Scanner(System.in);
-        var pessoaView = new ClientePessoaView();
+        PessoaController pessoaController = new PessoaController();
+
+        var pessoaView = new ClientePessoaView(pessoaController);
         var empresaView = new ClienteEmpresaView();
 
         var continuarAplicacao = true;

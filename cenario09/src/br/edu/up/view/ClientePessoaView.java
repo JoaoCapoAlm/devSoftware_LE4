@@ -9,19 +9,21 @@ public class ClientePessoaView {
     private final Scanner _scanner;
     private PessoaController _controller;
 
-    public ClientePessoaView(){
+    public ClientePessoaView(PessoaController pessoaController){
         _scanner = new Scanner(System.in);
-        _controller = new PessoaController();
+        _controller = pessoaController;
     }
     public void IncluirCliente() {
         System.out.println("Digite os dados do cliente");
-        System.out.println("Limite de crédito");
-        var maxCredito = _scanner.nextDouble();
-        _scanner.nextLine();
+
 
         try {
             System.out.println("CPF");
             var cpf = _scanner.nextLine();
+            System.out.println("Limite de crédito");
+            var maxCredito = _scanner.nextDouble();
+            _scanner.nextLine();
+
             var clientePessoa = new ClientePessoa(maxCredito, cpf);
             System.out.println("Nome");
             clientePessoa.setNome(_scanner.nextLine());

@@ -65,7 +65,7 @@ public abstract class Cliente {
         if((getVlrEmprestado() + valor) <= getVlrMaxCredito()){
             setVlrEmprestado(getVlrEmprestado() + valor);
         } else {
-            throw new Exception("Valor disponível maior que permitido!");
+            throw new Exception("Valor solicitado maior que permitido!");
         }
     }
 
