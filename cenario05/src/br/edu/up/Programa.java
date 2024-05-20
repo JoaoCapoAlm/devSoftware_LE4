@@ -18,8 +18,9 @@ public class Programa {
             sc.nextLine();
 
             switch (opcao) {
-                case 1 -> eventoView.ShowEventos();
-                case 2 -> eventoView.AddEvento();
+                case 1 -> eventoView.Listar();
+                case 2 -> eventoView.Adicionar();
+                case 4 -> eventoView.Excluir();
                 default -> continuarAplicacao = false;
             }
         }
@@ -30,5 +31,8 @@ public class Programa {
         System.out.println("-----Menu-----");
         System.out.println("1) Ver eventos");
         System.out.println("2) Criar evento");
+        //System.out.println("3) Alterar evento");
+        System.out.println("4) Excluir evento");
+
     }
 }

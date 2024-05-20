@@ -2,21 +2,27 @@ package br.edu.up.controller;
 
 import br.edu.up.model.Evento;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class EventoController {
-    private List<Evento> listaEventos;
+    private Evento[] listaEventos;
 
     public EventoController() {
-        listaEventos = new ArrayList<Evento>();
+        listaEventos = new Evento[100];
     }
 
-    public List<Evento> getListaEventos() {
+    public Evento[] getListaEventos() {
         return listaEventos;
     }
 
     public void addEvento(Evento evento) {
-        listaEventos.add(evento);
+        for (int i = 0; i < listaEventos.length; i++) {
+            if(listaEventos[i] == null){
+                listaEventos[i] = evento;
+                return;
+            }
+        }
+    }
+
+    public void excluir(int index){
+        listaEventos[index] = null;
     }
 }

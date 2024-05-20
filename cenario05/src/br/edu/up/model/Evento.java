@@ -23,6 +23,19 @@ public class Evento {
 
     @Override
     public String toString() {
-        return nome + " (" + data.toString() + ")\nlocal: " + local + "\nlotação: " + lotacaoMaxima;
+        var sb = new StringBuilder(nome);
+        sb.append(" (");
+        sb.append(data);
+        sb.append(")");
+        sb.append('\n');
+        sb.append("Local: ");
+        sb.append(local);
+        sb.append('\n');
+        sb.append("Lotação: ");
+        sb.append(lotacaoMaxima);
+        sb.append('\n');
+        sb.append("Preço: ");
+        sb.append(preco);
+        return sb.toString();
     }
 }

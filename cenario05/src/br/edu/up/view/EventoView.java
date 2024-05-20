@@ -14,16 +14,17 @@ public class EventoView {
         sc = new Scanner(System.in);
     }
 
-    public void ShowEventos(){
+    public void Listar(){
         var eventos = _controller.getListaEventos();
 
-        for(var evento : eventos){
-            System.out.println(evento);
+        for(var i = 0; i < eventos.length; i++){
+            System.out.print((i + 1) + ") ");
+            System.out.println(eventos[i]);
             System.out.println();
         }
     }
 
-    public void AddEvento(){
+    public void Adicionar(){
         System.out.println("Insira os dados do evento");
 
         try {
@@ -48,6 +49,14 @@ public class EventoView {
         } catch (Exception e){
             System.out.println("Não foi possível adicionar o evento - " + e.getMessage());
         }
+    }
 
+    public void Excluir(){
+        Listar();
+
+        var evento = sc.nextInt();
+        sc.nextLine();
+
+        _controller.excluir(evento - 1);
     }
 }

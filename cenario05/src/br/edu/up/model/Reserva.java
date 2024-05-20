@@ -2,7 +2,7 @@ package br.edu.up.model;
 
 import java.util.Date;
 
-public class reserva {
+public class Reserva {
     private String nomeResponsavel;
     private int quantidade;
     private Date dataReserva;
