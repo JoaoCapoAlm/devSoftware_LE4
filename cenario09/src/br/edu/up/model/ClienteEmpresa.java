@@ -5,11 +5,13 @@ public class ClienteEmpresa extends Cliente {
     private String inscEstadual;
     private int AnoFundacao;
 
-    public ClienteEmpresa(double credito) {
+    public ClienteEmpresa(double credito, String documento) {
         super(credito);
 
         if(credito >= 25000)
             throw new IllegalArgumentException("Limite de crédito ultrapassado!");
+
+        setCnpj(documento);
     }
 
     public String getCnpj() {

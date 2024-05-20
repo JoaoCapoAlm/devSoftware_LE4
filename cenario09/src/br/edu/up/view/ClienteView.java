@@ -1,39 +1,49 @@
 package br.edu.up.view;
 
-import br.edu.up.controller.PessoaController;
+import br.edu.up.controller.ClienteController;
+import br.edu.up.model.ClienteEmpresa;
 import br.edu.up.model.ClientePessoa;
 
 import java.util.Scanner;
 
-public class ClientePessoaView {
+public class ClienteView {
     private final Scanner _scanner;
-    private PessoaController _controller;
+    private ClienteController _controller;
 
-    public ClientePessoaView(PessoaController pessoaController){
+    public ClienteView(){
         _scanner = new Scanner(System.in);
-        _controller = pessoaController;
+        _controller = new ClienteController();
     }
-    public void IncluirCliente() {
-        System.out.println("Digite os dados do cliente");
 
+    public void IncluirCliente() {
+        System.out.println("Insira os dados do cliente");
 
         try {
-            System.out.println("CPF");
-            var cpf = _scanner.nextLine();
+            System.out.println("Documento");
+            var documento = _scanner.nextLine()
+                    .replace("/", "")
+                    .replace("-", "")
+                    .replace(".", "")
+                    .trim();
+
             System.out.println("Limite de crédito");
             var maxCredito = _scanner.nextDouble();
             _scanner.nextLine();
 
-            var clientePessoa = new ClientePessoa(maxCredito, cpf);
-            System.out.println("Nome");
-            clientePessoa.setNome(_scanner.nextLine());
-            System.out.println("E-mail");
-            clientePessoa.setEmail(_scanner.nextLine());
-            System.out.println("Telefone");
-            clientePessoa.setTelefone(_scanner.nextLine());
-            clientePessoa.emprestar(1000);
+            var cliente = documento.length() == 14
+                    ? new ClienteEmpresa(maxCredito, documento)
+                    : new ClientePessoa(maxCredito, documento);
 
-            _controller.AddCliente(clientePessoa);
+            System.out.println("Nome");
+            cliente.setNome(_scanner.nextLine());
+
+            System.out.println("E-mail");
+            cliente.setEmail(_scanner.nextLine());
+
+            System.out.println("Telefone");
+            cliente.setTelefone(_scanner.nextLine());
+
+            _controller.AddCliente(cliente);
             System.out.println("Cliente cadastrado!");
         } catch (Exception ex){
             System.out.println(ex.getMessage());
@@ -41,9 +51,9 @@ public class ClientePessoaView {
     }
 
     public void ShowCliente(){
-        System.out.println("Digite o CPF do cliente que deseja verificar os dados");
-        var cpf = _scanner.nextLine();
-        var cliente = _controller.GetCliente(cpf);
+        System.out.println("Digite o documento do cliente que deseja verificar os dados");
+        var documento = _scanner.nextLine();
+        var cliente = _controller.GetCliente(documento);
 
         if(cliente == null)
             System.out.println("Cliente não encontrado!");
@@ -52,7 +62,7 @@ public class ClientePessoaView {
     }
 
     public void Emprestar(){
-        System.out.println("Digite o CPF do cliente");
+        System.out.println("Digite o documento do cliente");
         var documento = _scanner.nextLine();
 
         System.out.println("Valor a ser emprestado");
@@ -64,7 +74,7 @@ public class ClientePessoaView {
     }
 
     public void Devolver(){
-        System.out.println("Digite o CPF do cliente");
+        System.out.println("Digite o documento do cliente");
         var documento = _scanner.nextLine();
 
         System.out.println("Valor a ser devolvido");
